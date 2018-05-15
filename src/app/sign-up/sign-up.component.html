@@ -1,0 +1,29 @@
+<div class="mainContainer">
+    <section class="logo-container">
+        <img class="logo-image" src="assets/images/g25401-512.png" /><span class="logo-name">BookMyCab</span>
+    </section>
+    <form #userForm='ngForm'>
+        <div class="container" style="  padding-left: 24%;">
+            <!-- <label for="uname"><b>Username</b></label> -->
+            <input class="input-box" type="text" placeholder="Username" name="uname" required>
+            <input class="input-box" type="email" placeholder="Email" name="email" required>
+
+            <!-- <label for="psw"><b>Password</b></label> -->
+            <input class="input-box" type="password" placeholder="Password" name="psw" required>
+            <input class="input-box" type="password" placeholder="Confirm Password" name="confirmPsw" required>
+            <input class="input-box" type="tel" placeholder="Phone number" name="confirmPsw" required>
+
+            <span style="color:#757575; margin-right:2rem; font-size:20px;"> Role:</span>
+            <label class="radio-inline role"><input type="radio" name="role" value="user">User</label>
+            <label class="radio-inline role"><input type="radio" name="role" value="driver">Driver</label>
+            <!-- <input type="radio" name="role" value="user"> -->
+            <!-- <User <input type="radio" name="role" value="driver">Driver -->
+
+
+        </div>
+
+        <button class="btn btn-default signinButton" [disabled]="!userForm.valid">Signin</button><br>
+
+
+    </form>
+</div>
