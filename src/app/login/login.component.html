@@ -1,0 +1,22 @@
+<div class="mainContainer">
+    <section class="logo-container">
+        <img class="logo-image" src="assets/images/g25401-512.png" /><span class="logo-name">BookMyCab</span>
+    </section>
+    <form #userForm='ngForm'>
+        <div class="container" style=" padding-left: 24%;">
+            <!-- <label for="uname"><b>Username</b></label> -->
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <!-- <label for="psw"><b>Password</b></label> -->
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <!-- <label>
+      <input type="checkbox" checked="checked" name="remember"> <span style="color:#757575">Remember me</span>
+         <span style="color:#757575" class="psw">Forgot <a href="#">password?</a></span> 
+    </label> -->
+        </div>
+
+        <button class="btn btn-default loginButton" [disabled]="!userForm.valid">Login</button><br>
+        <span style="margin-left: 46%;"><a  routerLink="/signup" routerLinkActive="active">Create Account</a></span>
+
+    </form>
+</div>
