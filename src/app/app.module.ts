@@ -28,12 +28,12 @@ import { HttpModule } from '@angular/http';
     }),
     RouterModule.forRoot([
       {
-        path: '', component: LoginComponent
+        path: '', component : LoginComponent
       }, {
-        path: 'signup', component: SignUpComponent
+        path: 'signup', component : SignUpComponent
       },
       {
-        path: 'getlocation', component: LocationMapComponent
+        path: 'getlocation', component : LocationMapComponent
     }])
   ],
   providers: [],
