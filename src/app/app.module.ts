@@ -30,7 +30,7 @@ import { HttpModule } from '@angular/http';
       {
         path: '', component : LoginComponent
       }, {
-        path: 'signup', component : SignUpComponent
+        path: 'signupdrgdg', component : SignUpComponent
       },
       {
         path: 'getlocation', component : LocationMapComponent
