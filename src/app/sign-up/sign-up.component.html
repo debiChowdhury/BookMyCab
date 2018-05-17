@@ -5,24 +5,24 @@
     <form #userForm='ngForm' >
         <div class="container" style="  padding-left: 24%;">
             <!-- <label for="uname"><b>Username</b></label> -->
-            <input class="input-box" type="text" placeholder="Username" name="uname" required>
-            <input class="input-box" type="email" placeholder="Email" name="email" required>
+            <input class="input-box" type="text" placeholder="Username" name="uname" [(ngModel)]="userName" required>
+            <input class="input-box" type="email" placeholder="Email" name="email" [(ngModel)]="userEmail" required>
 
             <!-- <label for="psw"><b>Password</b></label> -->
-            <input class="input-box" type="password" placeholder="Password" name="psw" required>
-            <input class="input-box" type="password" placeholder="Confirm Password" name="confirmPsw" required>
-            <input class="input-box" type="tel" placeholder="Phone number" name="confirmPsw" required>
+            <input class="input-box" type="password" placeholder="Password" [(ngModel)]="userPassword" name="psw" required>
+            <input class="input-box" type="password" placeholder="Confirm Password" name="confirmPsw" [(ngModel)]="userConfiormPassword" required>
+            <input class="input-box" type="tel" placeholder="Phone number" name="confirmPsw" [(ngModel)]="userPhone" required>
 
             <span style="color:#757575; margin-right:2rem; font-size:20px;"> Role:</span>
-            <label class="radio-inline role"><input type="radio" name="role" value="user">User</label>
-            <label class="radio-inline role"><input type="radio" name="role" value="driver">Driver</label>
+            <label class="radio-inline role"><input type="radio" name="role" value="user" [(ngModel)]="userRole">User</label>
+            <label class="radio-inline role"><input type="radio" name="role" value="driver" [(ngModel)]="userRole">Driver</label>
             <!-- <input type="radio" name="role" value="user"> -->
             <!-- <User <input type="radio" name="role" value="driver">Driver -->
 
 
         </div>
 
-        <button class="btn btn-default signinButton" [disabled]="!userForm.valid">Signin</button><br>
+        <button class="btn btn-default signinButton" [disabled]="!userForm.valid" (click)=onClickSignUp()>Sign Up</button><br>
 
 
     </form>

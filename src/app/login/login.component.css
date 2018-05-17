@@ -1,3 +1,4 @@
+
 input[type=text],
 input[type=password] {
     width: 60%;
@@ -36,7 +37,7 @@ input[type=password]:focus {
 }
 
 .mainContainer {
-    height: 636px;
+    height: 662px;
     background-color: #1e2538;
 }
 
@@ -94,4 +95,12 @@ span.psw {
     color: #2a949c;
     font-size: 40px;
     vertical-align: middle
+}
+
+.errorMsg {
+    color: red;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 2rem;
 }

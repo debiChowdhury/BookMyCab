@@ -11,7 +11,7 @@ export class LocationMapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.lat = 88.3639;
+    this.lat = 22.5726;
     this.lng = 88.3639;
   }
 
