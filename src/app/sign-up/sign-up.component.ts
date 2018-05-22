@@ -11,24 +11,37 @@ export class SignUpComponent implements OnInit {
   userName;
   userEmail;
   userPassword;
-  userConfiormPassword;
+  userConfirmPassword;
   userRole;
   userPhone;
+  userInfo;
+  isValidPsw = false;
   constructor() { }
 
   ngOnInit() {
   }
 
   onClickSignUp() {
+
     const user = {
       'username': this.userName,
-      'useremail' : this.userEmail,
+      'useremail': this.userEmail,
       'password': this.userPassword,
       'phoneno': this.userPhone,
       'role': this.userRole
     };
-    this.registeredUsers.push(user);
-    console.log(this.registeredUsers);
-    localStorage.setItem('registered_user', JSON.stringify(this.registeredUsers));
+    this.registeredUsers = JSON.parse(localStorage.getItem('registered_user'));
+
+    if (this.registeredUsers === null) {
+      this.registeredUsers = [];
+    }
+    if (this.userPassword === this.userConfirmPassword) {
+      this.registeredUsers.push(user);
+      console.log(this.registeredUsers);
+      localStorage.setItem('registered_user', JSON.stringify(this.registeredUsers));
+    }
+  }
+  checkPassword() {
+    this.isValidPsw = true;
   }
 }
