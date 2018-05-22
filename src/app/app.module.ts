@@ -24,17 +24,17 @@ import { HttpModule } from '@angular/http';
     CommonModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA0PZkCm7Ic8RDDVEt_3j2xjts5OD2xN_Q'
+      apiKey: 'AIzaSyB3wzyVBSujdokt4YclYkdpNu-624CjFN4'
     }),
     RouterModule.forRoot([
       {
-        path: '', component : LoginComponent
+        path: '', component: LoginComponent
       }, {
-        path: 'signup', component : SignUpComponent
+        path: 'signup', component: SignUpComponent
       },
       {
-        path: 'getlocation', component : LocationMapComponent
-    }])
+        path: 'getlocation', component: LocationMapComponent
+      }])
   ],
   providers: [],
   bootstrap: [AppComponent]
