@@ -25,18 +25,19 @@
 .signinButton {
     margin-left: 35%;
     width: 30%;
-    background-color: #2a949c;
-    color: white;
+    background-color: #efc84d;
+    color: #053746;
     font-weight: bold;
     outline: 0;
     border: none;
     border-radius: 0;
     margin-bottom: 1%;
     margin-top: 3rem;
+    box-shadow: 3px 5px 3px 1px #0000004d;
 }
 
 .signinButton:active {
-    background-color: #0d6073;
+    background-color: #efc84d;
     outline: 0;
 }
 
@@ -46,7 +47,7 @@
 
 .mainContainer {
     height: 670px;
-    background-color: #1e2538;
+    background-color: #053746;
 }
 
 .signinButton:disabled {
@@ -111,7 +112,8 @@ span.psw {
     /* green */
 }
 
-.ng-invalid:not(form) {
+
+/* .ng-invalid:not(form) {
     border-left: 5px solid #a94442;
-    /* red */
-}
+    
+} */
