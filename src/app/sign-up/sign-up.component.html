@@ -7,34 +7,38 @@
             <!-- <label for="uname"><b>Username</b></label> -->
             <input class="input-box" type="text" minlength="4" placeholder="Username" name="uname" [(ngModel)]="userName" required #uname=ngModel>
             <div *ngIf="uname.errors && (uname.dirty || uname.touched)">
-                <div [hidden]="!uname.errors.required" style="color:#b5312f">Please enter a name</div>
+                <!-- <div [hidden]="!uname.errors.required" style="color:#b5312f">Please enter a name</div> -->
                 <div [hidden]="!uname.errors.minlength" style="color:#b5312f">Please enter atleast 4 character</div>
             </div>
 
             <input class="input-box" type="email" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="Email" name="email" [(ngModel)]="userEmail" required #email=ngModel>
             <div *ngIf="email.errors && (email.dirty || email.touched)">
-                <div [hidden]="!email.errors.required" style="color:#b5312f">Please enter an email</div>
+                <!-- <div [hidden]="!email.errors.required" style="color:#b5312f">Please enter an email</div> -->
                 <div [hidden]="!email.errors.pattern" style="color:#b5312f">Please enter valid email</div>
             </div>
             <!-- <label for="psw"><b>Password</b></label> -->
             <input class="input-box" type="password" placeholder="Password" [(ngModel)]="userPassword" name="psw" required #psw=ngModel>
-            <div [hidden]="psw.valid || psw.pristine" style="color:#b5312f">Please enter a password</div>
+            <!-- <div [hidden]="psw.valid || psw.pristine" style="color:#b5312f">Please enter a password</div> -->
 
-            <input class="input-box" type="password" placeholder="Confirm Password" name="confirmPsw" [(ngModel)]="userConfiormPassword" (change)=checkPassword() required>
+            <input class="input-box" type="password" placeholder="Confirm Password" name="confirmPsw" [(ngModel)]="userConfirmPassword" (blur)=checkPassword() required>
             <div *ngIf="!isValidPsw" style="color:#b5312f">Password and Confrim password doesn't match</div>
 
-            <input class="input-box" type="tel" placeholder="Phone number" name="confirmPsw" [(ngModel)]="userPhone" required>
+            <input class="input-box" type="tel" minlength="10" placeholder="Phone number" name="uPhone" [(ngModel)]="userPhone" required #uPhone=ngModel>
+            <div *ngIf="uPhone.errors && (uPhone.dirty || uPhone.touched)">
+                <!-- <div [hidden]="!uPhone.errors.required" style="color:#b5312f">Please enter mobile number</div> -->
+                <div [hidden]="!uPhone.errors.minlength" style="color:#b5312f">Please enter 10 digit mobile number</div>
+            </div>
 
             <span style="color:#757575; margin-right:2rem; font-size:20px;"> Role:</span>
-            <label class="radio-inline role"><input type="radio" name="role" value="user" [(ngModel)]="userRole">User</label>
-            <label class="radio-inline role"><input type="radio" name="role" value="driver" [(ngModel)]="userRole">Driver</label>
+            <label class="radio-inline role"><input type="radio" name="userRole" value="user" [(ngModel)]="userRole" #role=ngModel required>User</label>
+            <label class="radio-inline role"><input type="radio" name="userRole" value="driver" [(ngModel)]="userRole" required>Driver</label>
             <!-- <input type="radio" name="role" value="user"> -->
             <!-- <User <input type="radio" name="role" value="driver">Driver -->
 
 
         </div>
 
-        <button class="btn btn-default signinButton" [disabled]="!userForm.valid" (click)=onClickSignUp()>Sign Up</button><br>
+        <button class="btn btn-default signinButton" [disabled]="!userForm.valid || role.errors" (click)=onClickSignUp()>Sign Up</button><br>
 
 
     </form>

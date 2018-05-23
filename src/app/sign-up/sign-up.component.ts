@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -14,9 +18,8 @@ export class SignUpComponent implements OnInit {
   userConfirmPassword;
   userRole;
   userPhone;
-  userInfo;
-  isValidPsw = false;
-  constructor() { }
+  isValidPsw = true;
+  constructor(private routePath: Router) { }
 
   ngOnInit() {
   }
@@ -35,13 +38,23 @@ export class SignUpComponent implements OnInit {
     if (this.registeredUsers === null) {
       this.registeredUsers = [];
     }
-    if (this.userPassword === this.userConfirmPassword) {
-      this.registeredUsers.push(user);
-      console.log(this.registeredUsers);
-      localStorage.setItem('registered_user', JSON.stringify(this.registeredUsers));
-    }
+    this.registeredUsers.push(user);
+    console.log(this.registeredUsers);
+    localStorage.setItem('registered_user', JSON.stringify(this.registeredUsers));
+    this.userName = '';
+    this.userEmail = '';
+    this.userPassword = '';
+    this.userConfirmPassword = '';
+    this.userRole = '';
+    this.userPhone = '';
+    this.routePath.navigate(['/']);
+
   }
   checkPassword() {
-    this.isValidPsw = true;
+    if (this.userPassword === this.userConfirmPassword) {
+      this.isValidPsw = true;
+    } else {
+      this.isValidPsw = false;
+    }
   }
 }

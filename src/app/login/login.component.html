@@ -14,8 +14,8 @@
          <span style="color:#757575" class="psw">Forgot <a href="#">password?</a></span> 
     </label> -->
         </div>
-        <span class="errorMsg" *ngIf="showErrorMsg">Error!</span>
-        <button class="btn btn-default loginButton" [disabled]="!userForm.valid" (click)="onClickLoginButton()" >Login</button><br>
+        <span class="errorMsg" *ngIf="showErrorMsg">Username or password is incorrect!</span>
+        <button class="btn btn-default loginButton" [disabled]="!userForm.valid" (click)="onClickLoginButton()">Login</button><br>
         <span style="margin-left: 46%;"><a  routerLink="/signup" routerLinkActive="active">Create Account</a></span>
 
     </form>
