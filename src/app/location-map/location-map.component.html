@@ -1,6 +1,17 @@
 <div class="heading-wrapper">
-    <i class="fa fa-bars menu-icon" aria-hidden="true" (click)="sidenav.toggle()"></i>
+    <i class="fa fa-bars menu-icon" aria-hidden="true"  (click)="toggleNav()" ></i>
 </div>
+<div id="mySidenav" class="sidenav" [@menuWidth]="menuWidth">
+    <a href="javascript:void(0)" class="closebtn" (click)="toggleNav()">&times;</a>
+    <div class="userInfo">
+        <p>{{ uname }}</p>
+        <span>{{ uphone }}</span>
+    </div>
+    <a href="#">Book your rides</a>
+    <a href="#">Your rides</a>
+    <a href="#">Emergency contacts</a>
+    <a href="#">Support</a>
+  </div>
 <agm-map [latitude]="lat" [longitude]="lng">
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
