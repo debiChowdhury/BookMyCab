@@ -1,0 +1,14 @@
+<div class="heading-wrapper">
+  <i class="fa fa-bars menu-icon" aria-hidden="true"  (click)="toggleNav()" ></i>
+</div>
+<div id="mySidenav" class="sidenav" [@menuWidth]="menuWidth">
+  <a href="javascript:void(0)" class="closebtn" (click)="toggleNav()">&times;</a>
+  <div class="userInfo">
+      <p>{{ uname }}</p>
+      <span>{{ uphone }}</span>
+  </div>
+  <ul>
+      <li class="menuItems" *ngFor="let item of menuItems" (click)="onMenuItemSelected(item)" >{{ item.name }}</li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

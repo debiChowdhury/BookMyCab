@@ -1,52 +1,70 @@
 import {
   Component,
-  OnInit,
-  style,
-  animate,
-  trigger,
-  keyframes,
-  transition,
-  group,
-  state
+  OnInit
 } from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+// import {} from '@types/googlemaps';
+//  import {ngSelectLocation, EmitterService } from '../ng2-location/browser-location';
 
 @Component({
   selector: 'app-location-map',
+  // providers: [EmitterService],
   templateUrl: './location-map.component.html',
-  styleUrls: ['./location-map.component.css'],
-  animations: [
-    trigger('menuWidth', [
-      state('inactive', style({
-        width: '0%'
-      })),
-      state('active',   style({
-        width: '28%'
-      })),
-      transition('inactive <=> active', animate('0.1s ease-out'))
-    ])
-  ]
+  styleUrls: ['./location-map.component.css']
 })
 export class LocationMapComponent implements OnInit {
   lat: number;
   lng: number;
-  uname;
-  uphone;
-  openMenu = false;
-  menuWidth = 'inactive';
-  constructor() {}
-
+  isTracking;
+  currentLat;
+  currentLong;
+  map;
+  marker;
+//   public selectedCity: any;
+//  constructor(private emitterService: EmitterService, private router: Router) {
+//  window.localStorage.removeItem('city');
+//  }
   ngOnInit() {
     this.lat = 22.5726;
     this.lng = 88.3639;
-    this.uname = JSON.parse(localStorage.getItem('logged In User')).username;
-    const registeredUsers = JSON.parse(localStorage.getItem('registered_user'));
-    registeredUsers.forEach(user => {
-      return (this.uphone = user.phoneno);
-    });
+//     this.selectedCity = localStorage.getItem('city');
+//  EmitterService.get('selectedCity').subscribe(data => {
+//  this.selectedCity = data;
+//  localStorage.setItem('city', data);
+//  });
   }
 
-  toggleNav() {
-    this.menuWidth = (this.menuWidth === 'inactive') ? 'active' : 'inactive' ;
+  trackMe() {
+    if (navigator.geolocation) {
+      this.isTracking = true;
+      navigator.geolocation.watchPosition((position) => {
+        // this.showTrackingPosition(position);
+        console.log(position);
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
   }
+
+  // showTrackingPosition(position) {
+  //   console.log(`tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}`);
+  //   this.currentLat = position.coords.latitude;
+  //   this.currentLong = position.coords.longitude;
+
+  //   const location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  //   this.map.panTo(location);
+
+  //   if (!this.marker) {
+  //     this.marker = new google.maps.Marker({
+  //       position: location,
+  //       map: this.map,
+  //       title: 'Got you!'
+  //     });
+  //   } else {
+  //     this.marker.setPosition(location);
+  //   }
+  // }
 
 }

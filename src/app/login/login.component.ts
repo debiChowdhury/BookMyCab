@@ -22,16 +22,20 @@ export class LoginComponent implements OnInit {
 
   onClickLoginButton() {
     console.log('login credentials >>', this.userEmail, this.userPassword);
-    this.registeredUser.forEach((user) => {
-      if (user.username === this.userEmail && user.password === this.userPassword) {
-        const userCredentials = {'username' : this.userEmail, 'password': this.userPassword};
-        localStorage.setItem('logged In User', JSON.stringify(userCredentials));
-        this.router.navigate(['/getlocation']);
-        this.showErrorMsg = false;
-      } else {
-        this.showErrorMsg = true;
-      }
-    });
+    if (this.registeredUser) {
+      this.registeredUser.forEach((user) => {
+        if (user.username === this.userEmail && user.password === this.userPassword) {
+          const userCredentials = {'username' : this.userEmail, 'password': this.userPassword};
+          localStorage.setItem('logged In User', JSON.stringify(userCredentials));
+          this.router.navigate(['/dashboard/bookmyride']);
+          this.showErrorMsg = false;
+        } else {
+          this.showErrorMsg = true;
+        }
+      });
+    } else {
+      alert('you are not a registered user. Please sign up to enter.');
+    }
   }
 
 }

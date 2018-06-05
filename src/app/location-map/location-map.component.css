@@ -1,71 +1,23 @@
 agm-map {
-    height: 300px
+    height: 600px
 }
 
-.heading-wrapper {
-    width: 100%;
-    height: 5rem;
-    background-color: #053746;
-}
-
-.menu-icon {
-    font-size: 32px;
-    color: #efc84d;
-    margin: 1rem;
-    cursor:pointer;
-}
-
-agm-map {
-    height: 600px;
-}
-
-.sidenav {
-    height: 100%;
+.location-input {
+    display: inline-block;
     position: fixed;
+    top: 20%;
+    left: 20%;
     z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    -webkit-transition: width 1s ease-in-out;
-    -moz-transition: width 1s ease-in-out;
-    -o-transition: width 1s ease-in-out;
-    transition: width 1s ease-in-out;
+    width: 60%;
 }
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
+.location-input>input {
     display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.userInfo {
-    background-color: #efc84d;
-    padding-left: 1.5rem;
-}
-
-.userInfo>p {
-    font-size: 20px;
+    width: 100%;
+    margin: 2rem 0;
+    height: 4rem;
+    box-shadow: 2px 3px 4px 0px darkgrey;
+    outline: none;
+    border: 0;
+    padding: 1rem;
 }
