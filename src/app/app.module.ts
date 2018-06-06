@@ -8,17 +8,35 @@ import { AgmCoreModule } from '@agm/core';
 import { LocationMapComponent } from './location-map/location-map.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { CustomerSupportComponent } from './customer-support/customer-support.component';
+import { MyRidesComponent } from './my-rides/my-rides.component';
+import { EmergencyContactComponent } from './emergency-contact/emergency-contact.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+// import {ngSelectLocation, EmitterService } from './ng2-location/browser-location';
 
-
-
+const routes: Routes = [
+  {path: '', component: LoginComponent},
+  {path: 'signup', component: SignUpComponent},
+  {path: 'dashboard', component: DashboardComponent, children: [
+    {path: 'bookmyride', component: LocationMapComponent},
+    {path: 'customersupport', component: CustomerSupportComponent},
+    {path: 'myrides', component: MyRidesComponent},
+    {path: 'emergencycontacts', component: EmergencyContactComponent},
+  ]},
+  {path: '**', component: LoginComponent }
+];
 @NgModule({
   declarations: [
     AppComponent,
     LocationMapComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    CustomerSupportComponent,
+    MyRidesComponent,
+    EmergencyContactComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -28,15 +46,9 @@ import { HttpModule } from '@angular/http';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB3wzyVBSujdokt4YclYkdpNu-624CjFN4'
     }),
-    RouterModule.forRoot([
-      {
-        path: '', component: LoginComponent
-      }, {
-        path: 'signup', component: SignUpComponent
-      },
-      {
-        path: 'getlocation', component: LocationMapComponent
-      }])
+    RouterModule.forRoot(
+      routes
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
