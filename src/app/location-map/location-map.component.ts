@@ -1,11 +1,12 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import {
   Router
 } from '@angular/router';
-// import {} from '@types/googlemaps';
+import {} from '@types/googlemaps';
 //  import {ngSelectLocation, EmitterService } from '../ng2-location/browser-location';
 
 @Component({
@@ -20,15 +21,17 @@ export class LocationMapComponent implements OnInit {
   isTracking;
   currentLat;
   currentLong;
+  pickUpLocation;
+  dropLocation;
   map;
   marker;
+  @ViewChild('mapContainer') mapContainer;
 //   public selectedCity: any;
 //  constructor(private emitterService: EmitterService, private router: Router) {
 //  window.localStorage.removeItem('city');
 //  }
   ngOnInit() {
-    this.lat = 22.5726;
-    this.lng = 88.3639;
+    this.trackMe();
 //     this.selectedCity = localStorage.getItem('city');
 //  EmitterService.get('selectedCity').subscribe(data => {
 //  this.selectedCity = data;
@@ -36,11 +39,12 @@ export class LocationMapComponent implements OnInit {
 //  });
   }
 
+
   trackMe() {
     if (navigator.geolocation) {
       this.isTracking = true;
       navigator.geolocation.watchPosition((position) => {
-        // this.showTrackingPosition(position);
+        this.showTrackingPosition(position);
         console.log(position);
       });
     } else {
@@ -48,23 +52,24 @@ export class LocationMapComponent implements OnInit {
     }
   }
 
-  // showTrackingPosition(position) {
-  //   console.log(`tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}`);
-  //   this.currentLat = position.coords.latitude;
-  //   this.currentLong = position.coords.longitude;
+  showTrackingPosition(position) {
+    console.log(`tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}`);
+    this.currentLat = position.coords.latitude;
+    this.currentLong = position.coords.longitude;
+    // this.map = new google.maps.Map(document.getElementById('mapContainer'));
+    // const location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    // this.map.panTo(location);
 
-  //   const location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  //   this.map.panTo(location);
-
-  //   if (!this.marker) {
-  //     this.marker = new google.maps.Marker({
-  //       position: location,
-  //       map: this.map,
-  //       title: 'Got you!'
-  //     });
-  //   } else {
-  //     this.marker.setPosition(location);
-  //   }
-  // }
+    // if (!this.marker) {
+    //   this.marker = new google.maps.Marker({
+    //     position: location,
+    //     map: this.map,
+    //     title: 'Got you!'
+    //   });
+    //   console.log(this.marker);
+    // } else {
+    //   this.marker.setPosition(location);
+    // }
+  }
 
 }

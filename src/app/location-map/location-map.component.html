@@ -2,8 +2,10 @@
   <input type="text" placeholder="Enter Pick Up Location" name="pickUpLocation" [(ngModel)]="pickUpLocation" required>
   <input type="text" placeholder="Enter Drop Location" name="dropLocation" [(ngModel)]="dropLocation" required>
 </div>
+<div id="mapContainer">
+  <agm-map [latitude]="currentLat" [longitude]="currentLong">
+    <agm-marker [latitude]="currentLat" [longitude]="currentLong"></agm-marker>
+  </agm-map>
+</div>
 
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
 <!-- <ngLocation></ngLocation> -->
